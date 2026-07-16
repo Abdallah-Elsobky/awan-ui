@@ -22,7 +22,7 @@ type AppView = 'dashboard' | 'calendar' | 'goals' | 'profile' | 'settings';
 export default function App() {
   const [appState, setAppState] = useState<AppState>('auth');
   const [view, setView] = useState<AppView>('dashboard');
-  const [mockupSize, setMockupSize] = useState<'S' | 'M' | 'L'>('M');
+  const [mockupSize, setMockupSize] = useState<'S' | 'M' | 'L'>('L');
   const [mockupTheme, setMockupTheme] = useState<'light' | 'dark' | 'eyeMode'>('dark');
   const [zones, setZones] = useState<Zone[]>(defaultZones);
   const [prefs, setPrefs] = useState<UserPreferences>(defaultPreferences);
