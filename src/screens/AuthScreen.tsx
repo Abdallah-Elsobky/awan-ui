@@ -45,7 +45,7 @@ export function AuthScreen({ onComplete }: AuthScreenProps) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-slate-50">
+    <div className="min-h-screen overflow-y-auto flex flex-col lg:flex-row bg-slate-50">
       {/* Hero side (desktop) */}
       <div className="hidden lg:flex flex-1 bg-gradient-to-br from-brand-600 via-brand-700 to-study-600 items-center justify-center p-12">
         <div className="max-w-md text-white">

@@ -2,6 +2,13 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    screens: {
+      sm: '99999px',
+      md: '99999px',
+      lg: '99999px',
+      xl: '99999px',
+      '2xl': '99999px',
+    },
     extend: {
       colors: {
         brand: {
