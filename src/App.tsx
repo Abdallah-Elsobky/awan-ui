@@ -23,7 +23,6 @@ export default function App() {
   const [appState, setAppState] = useState<AppState>('auth');
   const [view, setView] = useState<AppView>('dashboard');
   const [mockupSize, setMockupSize] = useState<'S' | 'M' | 'L'>('L');
-  const [mockupTheme, setMockupTheme] = useState<'light' | 'dark' | 'eyeMode'>('dark');
   const [zones, setZones] = useState<Zone[]>(defaultZones);
   const [prefs, setPrefs] = useState<UserPreferences>(defaultPreferences);
   const [tasks, setTasks] = useState<Task[]>(mockTasks);
@@ -161,9 +160,7 @@ export default function App() {
 
   return (
     <MobileMockup
-      theme={mockupTheme}
       size={mockupSize}
-      onThemeChange={setMockupTheme}
       onSizeChange={setMockupSize}
     >
       {appState === 'auth' ? (
@@ -291,21 +288,17 @@ export default function App() {
 
 interface MobileMockupProps {
   children: React.ReactNode;
-  theme: 'light' | 'dark' | 'eyeMode';
   size: 'S' | 'M' | 'L';
-  onThemeChange: (theme: 'light' | 'dark' | 'eyeMode') => void;
   onSizeChange: (size: 'S' | 'M' | 'L') => void;
 }
 
 function MobileMockup({
   children,
-  theme,
   size,
-  onThemeChange,
   onSizeChange,
 }: MobileMockupProps) {
   return (
-    <div className={`mockup-page-wrapper theme-${theme}`}>
+    <div className="mockup-page-wrapper theme-dark">
       {/* Drifting background clouds */}
       <div className="ambient-cloud cloud-1" />
       <div className="ambient-cloud cloud-2" />
@@ -316,7 +309,7 @@ function MobileMockup({
         <h3 className="text-xs font-bold tracking-wider uppercase opacity-80 mb-3.5">Environment</h3>
 
         {/* Mockup size selection */}
-        <div className="mb-4">
+        <div>
           <label className="text-[10px] font-bold opacity-60 block mb-1.5 uppercase tracking-wide">Mockup Size</label>
           <div className="flex gap-1.5">
             {(['S', 'M', 'L'] as const).map((s) => (
@@ -332,36 +325,6 @@ function MobileMockup({
                 {s}
               </button>
             ))}
-          </div>
-        </div>
-
-        {/* Mockup background theme selection */}
-        <div>
-          <label className="text-[10px] font-bold opacity-60 block mb-1.5 uppercase tracking-wide">Backdrop Theme</label>
-          <div className="flex gap-1.5">
-            {[
-              { id: 'light', label: 'Light', icon: Sun },
-              { id: 'dark', label: 'Dark', icon: Moon },
-              { id: 'eyeMode', label: 'Eye Care', icon: Eye },
-            ].map((t) => {
-              const Icon = t.icon;
-              const isActive = theme === t.id;
-              return (
-                <button
-                  key={t.id}
-                  onClick={() => onThemeChange(t.id as any)}
-                  className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold flex flex-col items-center gap-1 transition-all border ${
-                    isActive
-                      ? 'bg-brand text-white border-brand shadow-sm'
-                      : 'bg-slate-500/5 hover:bg-slate-500/10 border-transparent'
-                  }`}
-                  title={`${t.label} Theme`}
-                >
-                  <Icon size={13} />
-                  <span>{t.label}</span>
-                </button>
-              );
-            })}
           </div>
         </div>
       </div>
