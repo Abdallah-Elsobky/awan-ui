@@ -177,22 +177,72 @@
     z-index: 10;
     filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 40px rgba(34, 197, 94, 0.12));
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    height: var(--phone-height, 92vh);
-    aspect-ratio: 410 / 860;
-    max-width: 90vw;
-    width: auto;
+    width: var(--phone-width, 410px);
+    height: var(--phone-height, 860px);
+    transform: scale(var(--phone-scale, 1));
+    transform-origin: center center;
   }
 
   .phone-container.phone-size-s {
-    --phone-height: min(650px, 76vh);
+    --phone-width: 360px;
+    --phone-height: 760px;
   }
 
   .phone-container.phone-size-m {
-    --phone-height: min(780px, 84vh);
+    --phone-width: 410px;
+    --phone-height: 860px;
   }
 
   .phone-container.phone-size-l {
-    --phone-height: min(900px, 92vh);
+    --phone-width: 460px;
+    --phone-height: 940px;
+  }
+
+  /* Scale adjustments based on viewport height to fit exactly on screen and scale text proportionally */
+  @media (max-height: 1000px) {
+    .phone-container.phone-size-l { --phone-scale: 0.95; }
+    .phone-container.phone-size-m { --phone-scale: 1; }
+    .phone-container.phone-size-s { --phone-scale: 1; }
+  }
+  @media (max-height: 950px) {
+    .phone-container.phone-size-l { --phone-scale: 0.9; }
+    .phone-container.phone-size-m { --phone-scale: 0.95; }
+    .phone-container.phone-size-s { --phone-scale: 1; }
+  }
+  @media (max-height: 900px) {
+    .phone-container.phone-size-l { --phone-scale: 0.85; }
+    .phone-container.phone-size-m { --phone-scale: 0.9; }
+    .phone-container.phone-size-s { --phone-scale: 0.95; }
+  }
+  @media (max-height: 850px) {
+    .phone-container.phone-size-l { --phone-scale: 0.8; }
+    .phone-container.phone-size-m { --phone-scale: 0.84; }
+    .phone-container.phone-size-s { --phone-scale: 0.9; }
+  }
+  @media (max-height: 800px) {
+    .phone-container.phone-size-l { --phone-scale: 0.75; }
+    .phone-container.phone-size-m { --phone-scale: 0.79; }
+    .phone-container.phone-size-s { --phone-scale: 0.85; }
+  }
+  @media (max-height: 750px) {
+    .phone-container.phone-size-l { --phone-scale: 0.7; }
+    .phone-container.phone-size-m { --phone-scale: 0.74; }
+    .phone-container.phone-size-s { --phone-scale: 0.8; }
+  }
+  @media (max-height: 700px) {
+    .phone-container.phone-size-l { --phone-scale: 0.65; }
+    .phone-container.phone-size-m { --phone-scale: 0.69; }
+    .phone-container.phone-size-s { --phone-scale: 0.75; }
+  }
+  @media (max-height: 650px) {
+    .phone-container.phone-size-l { --phone-scale: 0.6; }
+    .phone-container.phone-size-m { --phone-scale: 0.64; }
+    .phone-container.phone-size-s { --phone-scale: 0.7; }
+  }
+  @media (max-height: 600px) {
+    .phone-container.phone-size-l { --phone-scale: 0.55; }
+    .phone-container.phone-size-m { --phone-scale: 0.59; }
+    .phone-container.phone-size-s { --phone-scale: 0.64; }
   }
 
   /* Physical Side Buttons */
